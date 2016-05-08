@@ -1,0 +1,14 @@
+body{
+    background-image: url(../imagenes/fondo.jpg);
+
+
+}
+.altura{
+
+    height: 750px;
+}
+
+.alinear{
+
+    display: inline-block;
+}

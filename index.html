@@ -1,0 +1,134 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="es">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Inicio de Sesión</title>
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico" />
+    <link href="css/materialize.min.css" rel="stylesheet" type="text/css">
+    <link href="css/styles.css"  rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="js/jquery-1.11.2.min.js"></script>
+    <script src="js/materialize.js"></script>
+    <script src="js/angular/angular.min.js"></script>
+    <script src="js/angular/angular-route.min.js"></script>
+<script>
+    $(document).ready(function() {
+    $('select').material_select();
+    $('.tooltipped').tooltip({delay: 50});
+
+    });
+
+</script>
+
+    <script type="text/javascript">
+
+        $(document).on("ready", function()
+        {
+            $(".siguiente").on("click", function()
+            {
+
+                    var tipo=$("#tipo").val();
+                    var usuario=$("#usuario").val();
+                    var contra=$("#contra").val();
+                    if(tipo=="" ||usuario=="" || contra=="")
+                    {
+                        $('#error').fadeIn(500).html('<div class="center-aligner red lighten-1 white-text btn">Campo Vacio</div>').fadeOut(6000);
+                    }
+                else{
+                    var dataString = 'tipo='+tipo+'&usuario='+usuario+'&contra='+contra;
+                    $.ajax({
+                        type: "POST",
+                        url: "php/inicio.php",
+                        data: dataString,
+                        success: function(data) {
+                            switch (data) {
+
+                                case "1":
+                                    document.location.href="php/panel_estudiante.php";
+                                    break;
+                                case "2":
+                                    document.location.href="php/panel_acudiente.php";
+                                    break;
+                                case "3":
+                                    document.location.href="php/panel_profesor.php";
+                                    break;
+                                case "4":
+                                    document.location.href="php/panel_admin.php";
+                                    break;
+                                default :
+                                    $('#error').fadeIn(100).html('<div class="center-aligner red lighten-1 white-text btn">Verifique sus datos</div>').fadeOut(6000);;
+                                    $("#usuario").val("");
+                                    $("#contra").val("");
+                                    break;
+
+
+                            }
+                         }
+                    });
+                }
+            });
+        });
+    </script>
+
+</head>
+<body>
+<div class="container">
+<div class="row valign-wrapper altura ">
+    <div class="col valign  s5 m5 l5 ">
+
+        <div class="card ">
+
+            <div class="card-content">
+                <img src="imagenes/escudo.png" width="80" height="80" alt="Escudo" class="center-block center-align">
+                <br></br>
+
+
+
+
+                        <div class="row">
+                            <div class="input-field col s12">
+                            <select name="tipo" id="tipo"  >
+                                <option value="" >Seleccione  usuario</option>
+                                <option value="1">Estudiante</option>
+                                <option value="2">Acudiente</option>
+                                <option value="3">Profesor</option>
+                                <option value="4">Administrador</option>
+                            </select>
+
+                            </div>
+
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix">person_pin</i>
+                                <input id="usuario" name="usuario" type="text" class="validate" >
+                                <label for="usuario">Usuario</label>
+                            </div>
+
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix">https</i>
+                                <input id="contra" name="contra" type="password" class="validate">
+                                <label for="contra">Contraseña</label>
+                            </div>
+                        </div>
+
+                <div id="error" class=" waves-light center-align"></div>
+             </div>
+            <a  class="waves-effect waves-light btn right white-text siguiente"> <i class="material-icons right white-text">play_arrow</i></a>
+
+        </div>
+
+
+
+    </div>
+
+</div>
+    <div class=" center-align center">
+        <a href="#" class="center center-align teal-text">Institucion Educativa Chon kay </br> Riohacha - la Guajira</spam></br> 2015 </br> © </a>
+
+    </div>
+</div>
+
+
+
+<script src="js/scriptAngular.js"></script>
+</body>
+</html>
