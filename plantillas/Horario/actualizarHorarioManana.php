@@ -1,11 +1,16 @@
 <?php
 include '../../php/class/Profesor.class.php';
-$p = new Profesor();
+include '../../php/class/Horario.class.php';
+$jornada=$_GET["jornada"];
+$curso  =$_GET["curso"];
+$p  = new Profesor();
+$h  = new Horario();
 $profesores = $p->consultarMateriaProfesor();
+$r          = $h->consultarHorario($jornada, $curso);
 ?>
 <br>
 
-<h5 class="center">Horario de la Ma&ntilde;ana</h5>
+<h5 class="center">Horario de la ma&ntilde;ana</h5>
 <BR>
 
   <form>
@@ -34,7 +39,7 @@ $profesores = $p->consultarMateriaProfesor();
                                 echo '
                             <td class="center bordered" >
                            <select name="f1'.$e.'" class=" center browser-default select" >
-                           <option value=""></option>';
+                           <option value="'.$r["f1".$e].'">'.$r["f1".$e].'</option>';
 
                                 foreach($profesores as $profesor){
                                 $materias=explode(',',$profesor['materias']);
@@ -62,7 +67,7 @@ $profesores = $p->consultarMateriaProfesor();
                                 echo '
                             <td class="center bordered" >
                            <select name="f2'.$e.'" class=" center browser-default select" >
-                           <option value=""></option>';
+                           <option value="'.$r["f2".$e].'">'.$r["f2".$e].'</option>';
 
                                 foreach($profesores as $profesor){
                                 $materias=explode(',',$profesor['materias']);
@@ -88,7 +93,7 @@ $profesores = $p->consultarMateriaProfesor();
                                 echo '
                             <td class="center bordered" >
                            <select name="f3'.$e.'" class=" center browser-default select" >
-                           <option value=""></option>';
+                           <option value="'.$r["f3".$e].'">'.$r["f3".$e].'</option>';
 
                                 foreach($profesores as $profesor){
                                 $materias=explode(',',$profesor['materias']);
@@ -115,7 +120,7 @@ $profesores = $p->consultarMateriaProfesor();
                                 echo '
                             <td class="center bordered" >
                            <select name="f4'.$e.'" class=" center browser-default select" >
-                           <option value=""></option>';
+                           <option value="'.$r["f4".$e].'">'.$r["f4".$e].'</option>';
 
                                 foreach($profesores as $profesor){
                                 $materias=explode(',',$profesor['materias']);
@@ -154,7 +159,7 @@ $profesores = $p->consultarMateriaProfesor();
                                 echo '
                             <td class="center bordered" >
                            <select name="f6'.$e.'" class=" center browser-default select" >
-                           <option value=""></option>';
+                           <option value="'.$r["f6".$e].'">'.$r["f6".$e].'</option>';
 
                                 foreach($profesores as $profesor){
                                 $materias=explode(',',$profesor['materias']);
@@ -180,7 +185,7 @@ $profesores = $p->consultarMateriaProfesor();
                                 echo '
                             <td class="center bordered" >
                            <select name="f7'.$e.'" class=" center browser-default select" >
-                           <option value=""></option>';
+                           <option value="'.$r["f7".$e].'">'.$r["f7".$e].'</option>';
 
                                 foreach($profesores as $profesor){
                                 $materias=explode(',',$profesor['materias']);
@@ -205,7 +210,7 @@ $profesores = $p->consultarMateriaProfesor();
 
              <div class="s12 center">
                  <br></br><br></br>
-              <a class="waves-effect waves-light btn center guardarHM">Guardar</a>
+              <a class="waves-effect waves-light btn center actualizarH">Actualizar</a>
               <p id="resultadoHorario" class=" center"></p>
             </div>
 </div>

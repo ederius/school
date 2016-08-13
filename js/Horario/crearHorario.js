@@ -15,11 +15,19 @@
 
                 success: function(data) {
                   if (data == 1) {
-                      alert("actualizar");
-
-                    }
-                    if(data == 2){
+                        alert("Actualizar");
+                        if (jornada=="1") {
+                          $("#contenido").load("../plantillas/Horario/actualizarHorarioManana.php?jornada="+jornada+'&curso='+curso);
+                        }else{
+                          $("#contenido").load("../plantillas/Horario/actualizarHorarioTarde.php?jornada="+jornada+'&curso='+curso);
+                        }
+                  }else{
                       alert("Guardar");
+                      if (jornada=="2") {
+                        $("#contenido").load("../plantillas/Horario/crearHorarioTarde.php");
+                      }else{
+                        $("#contenido").load("../plantillas/Horario/crearHorarioManana.php");
+                      }
                     }
                   }
                 });
@@ -27,34 +35,14 @@
             });
 
 
-
-
-  $(".guardarHM").on("click", function(){
+  $(".guardarHM").live("click", function(){
+    var curso = $("#horarioCursos").val();
+    var jornada = $("#jornadaHorario").val();
     var Data5;
     if (curso=="") {
       alert("Seleccione un curso!!");
     }
     else{
-        $.ajax({
-          type: "POST",
-          url: "../php/Horario/validarHorarioM.php",
-          data:"",
-
-          success: function(data) {
-            if (data == false) {
-              Data5=$("form").serialize();
-              $.ajax({
-                  type: "POST",
-                  url: "../php/Horario/actualizarHorarioM.php",
-                  data: Data5,
-
-                  success: function(data) {
-                      $('#resultadoHorario').fadeIn(1).html(data);
-                  }
-              });
-
-            }
-            else{
                   Data5=$("form").serialize();
                   $.ajax({
                       type: "POST",
@@ -67,7 +55,31 @@
                   });
 
                 }
-          }
+    });
+
+
+
+
+      $(".actualizarH").live("click", function(){
+        var curso = $("#horarioCursos").val();
+        var jornada = $("#jornadaHorario").val();
+        var Data5;
+        if (curso=="") {
+          alert("Seleccione un curso!!");
+        }else if (jornada=="") {
+          alert("Seleccione una jornada!!");
+        }
+        else{
+                      Data5=$("form").serialize();
+                      $.ajax({
+                          type: "POST",
+                          url: "../php/Horario/actualizarHorarioM.php",
+                          data: Data5,
+
+                          success: function(data) {
+                              $('#resultadoHorario').fadeIn(1).html(data);
+                          }
+                      });
+
+                    }
         });
-      }
-  });

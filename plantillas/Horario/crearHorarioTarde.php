@@ -1,31 +1,12 @@
 <?php
-include '../../php/class/Curso.class.php';
 include '../../php/class/Profesor.class.php';
-include '../../php/class/Alumno.class.php';
-$c= new Curso();
-$a = new Alumno();
 $p = new Profesor();
-
-$profesores = $p->consultarProfesores();
+$profesores = $p->consultarMateriaProfesor();
 ?>
-
-<h5>CREAR HORARIO</h5>
-
+<br>
 <h5 class="center">Horario de la tarde</h5>
 <BR>
-<div id="row">
-           
-            <select id="cursosAlumnos" >
-                <option value="">Curso</option>
-                <?php
-                $cursos= $c->consultarCursos();
-                foreach($cursos as $curso){
-                    echo '<option value="'.$curso["idcurso"].'">'.$curso["nombreCurso"].'</option>';
-                }
-
-                ?>
-             </select>
-                <br>
+  <form>
              <div class="col s12">
                 <table>
                     <thead>
@@ -42,22 +23,22 @@ $profesores = $p->consultarProfesores();
                     </thead>
 
                     <tbody>
-    
 
-                        <! - -    HORA NUMERO 8 - - ->
+
+                        <! - -    HORA NUMERO 1 - - ->
                         <tr>
                             <td class="center bordered">12:00 - 13:45</td>
                             <?php
                             for($e=1;$e<=7;$e++){
                                 echo '
                             <td class="center bordered" >
-                           <select name="8-'.$e.'" class=" center browser-default select" >
+                           <select name="f1'.$e.'" class=" center browser-default select" >
                            <option value=""></option>';
-                           
+
                                 foreach($profesores as $profesor){
                                 $materias=explode(',',$profesor['materias']);
-                                     for ($i=0; $i < count($materias) ; $i++) 
-                                     { 
+                                     for ($i=0; $i < count($materias) ; $i++)
+                                     {
                                        echo "<option value=''>".$materias[$i]." - ".$profesor['nombreProfesor']."</option>";
                                    }
 
@@ -68,20 +49,20 @@ $profesores = $p->consultarProfesores();
                             }
                             ?>
                         </tr>
-                       <! - -    HORA NUMERO 9 - - ->
+                       <! - -    HORA NUMERO 2 - - ->
                         <tr>
                             <td class="center bordered">13:45 - 14:30</td>
                             <?php
                             for($e=1;$e<=7;$e++){
                                 echo '
                             <td class="center bordered" >
-                           <select name="9-'.$e.'" class=" center browser-default select" >
+                           <select name="f2'.$e.'" class=" center browser-default select" >
                            <option value=""></option>';
-                           
+
                                 foreach($profesores as $profesor){
                                 $materias=explode(',',$profesor['materias']);
-                                     for ($i=0; $i < count($materias) ; $i++) 
-                                     { 
+                                     for ($i=0; $i < count($materias) ; $i++)
+                                     {
                                        echo "<option value=''>".$materias[$i]." - ".$profesor['nombreProfesor']."</option>";
                                    }
 
@@ -92,20 +73,20 @@ $profesores = $p->consultarProfesores();
                             }
                             ?>
                         </tr>
-                        <! - -    HORA NUMERO 10 - - ->
+                        <! - -    HORA NUMERO 3 - - ->
                         <tr>
                             <td class="center bordered">14:30 - 15:15</td>
                             <?php
                             for($e=1;$e<=7;$e++){
                                 echo '
                             <td class="center bordered" >
-                           <select name="10-'.$e.'" class=" center browser-default select" >
+                           <select name="f3'.$e.'" class=" center browser-default select" >
                            <option value=""></option>';
-                           
+
                                 foreach($profesores as $profesor){
                                 $materias=explode(',',$profesor['materias']);
-                                     for ($i=0; $i < count($materias) ; $i++) 
-                                     { 
+                                     for ($i=0; $i < count($materias) ; $i++)
+                                     {
                                        echo "<option value=''>".$materias[$i]." - ".$profesor['nombreProfesor']."</option>";
                                    }
 
@@ -116,20 +97,20 @@ $profesores = $p->consultarProfesores();
                             }
                             ?>
                         </tr>
-                       <! - -    HORA NUMERO 11 - - ->
+                       <! - -    HORA NUMERO 4 - - ->
                         <tr>
                             <td class="center bordered">15:15 - 16:00</td>
                             <?php
                             for($e=1;$e<=7;$e++){
                                 echo '
                             <td class="center bordered" >
-                           <select name="11-'.$e.'" class=" center browser-default select" >
+                           <select name="f4'.$e.'" class=" center browser-default select" >
                            <option value=""></option>';
-                           
+
                                 foreach($profesores as $profesor){
                                 $materias=explode(',',$profesor['materias']);
-                                     for ($i=0; $i < count($materias) ; $i++) 
-                                     { 
+                                     for ($i=0; $i < count($materias) ; $i++)
+                                     {
                                        echo "<option value=''>".$materias[$i]." - ".$profesor['nombreProfesor']."</option>";
                                    }
 
@@ -141,32 +122,32 @@ $profesores = $p->consultarProfesores();
                             ?>
                         </tr>
 
-                        <! - -    HORA NUMERO 12 - - ->
+                        <! - -    HORA NUMERO 5 - - ->
                         <tr class="green lighten-5">
                             <td class="center bordered">16:00 - 16:30</td>
                             <?php
                             for($e=1;$e<=7;$e++){
                                 echo '
                             <td class="center bordered" >
-                      
+
                             </td>';
                             }
                             ?>
                         </tr>
-                       <! - -    HORA NUMERO 13 - - ->
+                       <! - -    HORA NUMERO 6 - - ->
                         <tr>
                             <td class="center bordered">16:30 - 17:15</td>
                             <?php
                             for($e=1;$e<=7;$e++){
                                 echo '
                             <td class="center bordered" >
-                           <select name="13-'.$e.'" class=" center browser-default select" >
+                           <select name="f6'.$e.'" class=" center browser-default select" >
                            <option value=""></option>';
-                           
+
                                 foreach($profesores as $profesor){
                                 $materias=explode(',',$profesor['materias']);
-                                     for ($i=0; $i < count($materias) ; $i++) 
-                                     { 
+                                     for ($i=0; $i < count($materias) ; $i++)
+                                     {
                                        echo "<option value=''>".$materias[$i]." - ".$profesor['nombreProfesor']."</option>";
                                    }
 
@@ -178,20 +159,20 @@ $profesores = $p->consultarProfesores();
                             ?>
                         </tr>
 
-                                               <! - -    HORA NUMERO 14 - - ->
+                      <! - -    HORA NUMERO 7 - - ->
                         <tr>
                             <td class="center bordered">17:15 - 18:00</td>
                             <?php
                             for($e=1;$e<=7;$e++){
                                 echo '
                             <td class="center bordered" >
-                           <select name="14-'.$e.'" class=" center browser-default select" >
+                           <select name="f7'.$e.'" class=" center browser-default select" >
                            <option value=""></option>';
-                           
+
                                 foreach($profesores as $profesor){
                                 $materias=explode(',',$profesor['materias']);
-                                     for ($i=0; $i < count($materias) ; $i++) 
-                                     { 
+                                     for ($i=0; $i < count($materias) ; $i++)
+                                     {
                                        echo "<option value=''>".$materias[$i]." - ".$profesor['nombreProfesor']."</option>";
                                    }
 
@@ -205,15 +186,19 @@ $profesores = $p->consultarProfesores();
 
                     </tbody>
                 </table>
-                 
+
              </div>
 
+
+  </form>
+             <div class="s12 center">
+                 <br></br><br></br>
+              <a class="waves-effect waves-light btn center guardarHM">Guardar</a>
+              <p id="resultadoHorario" class=" center"></p>
+            </div>
 
 
 
 
 
 </div>
-
-
- 

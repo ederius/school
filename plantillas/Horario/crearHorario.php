@@ -3,7 +3,7 @@ include '../../php/class/Curso.class.php';
 $c= new Curso();
 ?>
 
-<h5>CREAR HORARIO</h5>
+<h5 class="center center-aligner">HORARIOS</h5>
 
 <BR>
   <form>
@@ -27,7 +27,7 @@ $c= new Curso();
                     <option value="2">Tarde</option>
 
                  </select>
-                 <div class="contenido">
+                 <div id="contenido">
 
                  </div>
 
