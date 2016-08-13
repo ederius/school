@@ -33,9 +33,9 @@ miAplicacion.config(['$routeProvider',function($routerProvider) {
         templateUrl: '../plantillas/Notificaciones/Notificaciones.php'
     }).when('/admin/boletines/generar', {
         templateUrl: '../plantillas/Boletines/boletines.php'
-    }).when('/admin/horario/crearManana', {
-        templateUrl: '../plantillas/Horario/crearHorarioManana.php'
-    }).when('/admin/horario/crearTarde', {
+    }).when('/admin/horario/crearHorario', {
+        templateUrl: '../plantillas/Horario/crearHorario.php'
+    }).when('/admin/horario/eliminarHorario', {
         templateUrl: '../plantillas/Horario/crearHorarioTarde.php'
     }).otherwise({
         redirectTo:'/admin',
@@ -43,5 +43,3 @@ miAplicacion.config(['$routeProvider',function($routerProvider) {
     });
 
 }]);
-
-

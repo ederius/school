@@ -36,7 +36,7 @@ class Profesor{
 
         try {
             $id="";
-            $query = $this->db->prepare(' insert into profesor values( :id, :nombre, :direccion, :celular, :telefono, :datos) 
+            $query = $this->db->prepare(' insert into profesor values( :id, :nombre, :direccion, :celular, :telefono, :datos)
                 ');
             $e=$query->execute(array('id' => $id,'nombre' => $nombre, 'direccion' => $direccion, 'celular' => $celular, 'telefono' => $telefono, 'datos' => $datos));
         }
@@ -105,7 +105,14 @@ class Profesor{
     }
 
 
+public function consultarMateriaProfesor(){
 
+          $query = $this->db->prepare("select * from profesor, materias WHERE profesor.idmateria=materias.idmateria  ");
+          $query->execute();
+          $resultado=$query->fetchAll();
+          return($resultado);
+
+}
 
 
 
