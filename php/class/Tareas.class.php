@@ -28,11 +28,18 @@ class Tareas {
 
     }
 
-    public function consultarTareasporidAlumno($fechaInicio, $fechaTope){
+    public function consultarTareasporidAlumno($fechaInicio, $fechaTope,$curso,$jornada){
 
-        $query = $this->db->prepare(' select * from tareas,profesor,materias,curso where tareas.idcurso=curso.idcurso
-and tareas.idprofesor=profesor.idprofesor and profesor.idmateria=materias.idmateria and tareas.fecha between :fechaInicio and :fechaTope');
-        $query->execute(array('fechaInicio' => $fechaInicio,'fechaTope' => $fechaTope));
+        $query = $this->db->prepare(' select * from tareas,profesor,materias,curso
+        where tareas.idcurso=curso.idcurso and
+        tareas.idprofesor=profesor.idprofesor and
+        profesor.idmateria=materias.idmateria and
+        (tareas.fecha between :fechaInicio and :fechaTope) and
+        tareas.idcurso=:idCurso and
+        tareas.idjornada=:jornada
+
+        ');
+        $query->execute(array('fechaInicio' => $fechaInicio,'fechaTope' => $fechaTope,'idCurso'=>$curso,'jornada'=>$jornada));
         $resultado=$query->fetchAll();
 
         return($resultado);
@@ -56,6 +63,33 @@ and tareas.idprofesor=profesor.idprofesor and profesor.idmateria=materias.idmate
         }
     }
 
+
+
+    public function consultarTareasporidProfesor($fechaInicio, $fechaTope,$idprofe){
+
+        $query = $this->db->prepare(' select * from tareas,profesor,materias,curso
+        where tareas.idcurso=curso.idcurso and
+        tareas.idprofesor=profesor.idprofesor and
+        profesor.idmateria=materias.idmateria and
+        (tareas.fecha between :fechaInicio and :fechaTope) and
+        tareas.idprofesor=:idprofe
+        ');
+        $query->execute(array('fechaInicio' => $fechaInicio,'fechaTope' => $fechaTope,'idprofe'=>$idprofe));
+        $resultado=$query->fetchAll();
+
+        return($resultado);
+
+    }
+
+    public function eliminarTareas($id){
+
+      $query = $this->db->prepare(' delete from tareas where idtareas=:id ');
+      $query->execute(array('id' => $id));
+      $resultado=$query->fetchAll();
+
+      return($resultado);
+
+    }
 
 
 }

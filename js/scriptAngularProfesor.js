@@ -17,11 +17,11 @@ miAplicacion.config(['$routeProvider',function($routerProvider) {
         templateUrl: '../plantillas/Notas/actualizarNotas.php'
     }).when('/profesor/tarea/crear', {
         templateUrl: '../plantillas/Tareas/asignarTareas.php'
+    }).when('/profesor/tarea/eliminar', {
+        templateUrl: '../plantillas/Tareas/eliminaTareas.php'
     }).otherwise({
         redirectTo:'/profesor',
         templateUrl:'../plantillas/inicio.php'
     });
 
 }]);
-
-

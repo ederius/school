@@ -105,14 +105,16 @@ class Profesor{
     }
 
 
-public function consultarMateriaProfesor(){
+    public function consultarMateriaProfesor(){
 
-          $query = $this->db->prepare("select * from profesor, materias WHERE profesor.idmateria=materias.idmateria  ");
-          $query->execute();
-          $resultado=$query->fetchAll();
-          return($resultado);
+              $query = $this->db->prepare("select * from profesor, materias WHERE profesor.idmateria=materias.idmateria  ");
+              $query->execute();
+              $resultado=$query->fetchAll();
+              return($resultado);
 
-}
+    }
+
+
 
 
 

@@ -208,5 +208,5 @@ $profesores = $p->consultarMateriaProfesor();
               <a class="waves-effect waves-light btn center guardarHM">Guardar</a>
               <p id="resultadoHorario" class=" center"></p>
             </div>
-</div>
+
 </form>

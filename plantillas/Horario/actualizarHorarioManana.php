@@ -207,11 +207,12 @@ $r          = $h->consultarHorario($jornada, $curso);
                 </table>
 
              </div>
-
              <div class="s12 center">
                  <br></br><br></br>
               <a class="waves-effect waves-light btn center actualizarH">Actualizar</a>
+              <a class="waves-effect waves-light btn center red btnModal">Eliminar</a>
+
               <p id="resultadoHorario" class=" center"></p>
             </div>
-</div>
+
 </form>

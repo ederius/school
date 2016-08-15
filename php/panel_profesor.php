@@ -89,11 +89,13 @@ $c=new Curso();
 
             <li class="no-padding">
                 <ul class="collapsible collapsible-accordion">
-                    <li class="bold"><a class="collapsible-header  waves-effect waves-teal"><i class=" small mdi-action-assignment"></i>Tareas</a>
+                    <li class="bold"><a class="collapsible-header  waves-effect waves-teal"><i class=" small mdi-action-assignment-turned-in"></i>Tareas</a>
                         <div class="collapsible-body teal lighten-5" style="">
                             <ul>
 
                                 <li><a class="asignarTarea" href="#/profesor/tarea/crear">Asignar Tareas</a></li>
+                                <li><a class="asignarTarea" href="#/profesor/tarea/eliminar">Eliminar Tareas</a></li>
+
                             </ul>
                         </div>
                     </li>
@@ -162,8 +164,7 @@ $c=new Curso();
 <script src="../js/Profesores/buscarProfesor.js"></script>
 <script src="../js/Notas/actualizarNotasProfesor.js"></script>
 <script src="../js/Tareas/AsignarTareas.js"></script>
-<script src="../js/Profesores/insertarNotas.js"></script>
-
+<script src="../js/Tareas/buscarTarea.js"></script>
 
 
 </body>

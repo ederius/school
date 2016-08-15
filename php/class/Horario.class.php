@@ -39,7 +39,8 @@ class Horario {
                 echo $e->getMessage();
             }
             if($query){
-             echo'<div class="center-aligner center light-blue white-text btn">Guardado!!</div>';
+             echo 1;
+
             }
         }
 
@@ -63,12 +64,28 @@ class Horario {
                 echo $e->getMessage();
             }
             if($query){
-             echo'<div class="center-aligner center light-blue white-text btn">Guardado!!</div>';
+             echo'<div class="center-aligner center light-blue white-text btn">Actualizado!!</div>';
             }
         }
 
 
-    public function consultarEstadoHorario($curso,$jornada){
+      public function eliminarHorario($jornada, $curso){
+
+        try {
+
+            $query = $this->db->prepare(' delete from horario where idjornada="'.$jornada.'" and idcurso="'.$curso.'" ');
+            $e=$query->execute();
+            }
+        catch(PDOException $e){
+            echo $e->getMessage();
+        }
+        if($query){
+         return 1;
+        }
+
+      }
+
+      public function consultarEstadoHorario($curso,$jornada){
 
             $q="";
             try {

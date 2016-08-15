@@ -2,13 +2,13 @@
 session_start();
 extract($_POST);
 include '../../php/class/Tareas.class.php';
-include '../../php/class/Alumno.class.php';
-$alumno=new Alumno();
-$alumnos=$alumno->consultarAlumnosporid($_SESSION['ididentidad']);
-foreach($alumnos as $a){}
+include '../../php/class/Profesor.class.php';
+$profesor=new Profesor();
+$p=$profesor->consultarProfesorporid($_SESSION['ididentidad']);
+foreach($p as $profe){}
 
 $tarea=new Tareas();
-$r=$tarea->consultarTareasporidAlumno($fechaInicio,$fechaTope,$a["idcurso"],$a["idjornada"]);
+$r=$tarea->consultarTareasporidProfesor($fechaInicio,$fechaTope,$profe["idprofesor"]);
 
 ?>
 
@@ -35,7 +35,7 @@ $r=$tarea->consultarTareasporidAlumno($fechaInicio,$fechaTope,$a["idcurso"],$a["
                     <td>'.$t["nombreMateria"].'</td>
                     <td>'.$t["titulo"].'</td>
                     <td>'.$t["fecha"].'</td>
-                    <td data-field="price blue"><a class="btnDescargarTarea" href="#/estudiante/tarea/descargar"><i class="mdi-action-assignment-returned small blue-text"></i></a></td>
+                    <td data-field="price blue"><a class="btnEliminarTarea" href="#/profesor/tarea/eliminar"><i class="mdi-action-delete small blue-text"></i></a></td>
                 </tr>
             ';
     }

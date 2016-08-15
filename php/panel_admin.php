@@ -102,8 +102,7 @@ $c=new Curso();
                     <li class="bold"><a class="collapsible-header  waves-effect waves-teal"><i class=" small mdi-action-assignment"></i>Horario</a>
                         <div class="collapsible-body teal lighten-5" style="">
                             <ul>
-                                <li><a href="#/admin/horario/crearHorario">Crear horario</a></li>
-                                <li><a href="#/admin/horario/eliminarHorario">Eliminar horario</a></li>
+                                <li><a href="#/admin/horario/crearHorario"> horario</a></li>
 
                             </ul>
                         </div>
