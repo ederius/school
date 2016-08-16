@@ -11,17 +11,19 @@ $(".buttonG").click(function(){
     }else {
       var datos='contrasena='+c;
       $.ajax({
+
           type: "POST",
           url: "Usuarios/validarContrasena.php",
           data: datos,
+
           success: function (data) {
-              $('.resultadoC').fadeIn(1000).html(data);
-              if (data==1) {
+             if (data==1) {
                 var datos='contrasena='+c2;
                 $.ajax({
                     type: "POST",
                     url: "Usuarios/cambiarContrasena.php",
                     data: datos,
+
                     success: function (data) {
                         $('.resultadoC').fadeIn(1000).html(data);
                     }

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
+-- version 4.2.11
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-05-2016 a las 01:05:59
--- Versión del servidor: 10.1.8-MariaDB
--- Versión de PHP: 5.6.14
+-- Tiempo de generación: 16-08-2016 a las 05:48:40
+-- Versión del servidor: 5.6.21
+-- Versión de PHP: 5.5.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Base de datos: `school`
@@ -26,8 +26,8 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `acudiente`
 --
 
-CREATE TABLE `acudiente` (
-  `idacudiente` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `acudiente` (
+`idacudiente` int(11) NOT NULL,
   `nombreAcudiente` text NOT NULL,
   `celularAcudiente` bigint(20) NOT NULL,
   `telefonoAcudiente` int(11) NOT NULL,
@@ -35,7 +35,7 @@ CREATE TABLE `acudiente` (
   `direccionTrabajoAcudiente` varchar(20) NOT NULL,
   `email` varchar(30) NOT NULL,
   `idalumno` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `acudiente`
@@ -52,7 +52,7 @@ INSERT INTO `acudiente` (`idacudiente`, `nombreAcudiente`, `celularAcudiente`, `
 -- Estructura de tabla para la tabla `administradores`
 --
 
-CREATE TABLE `administradores` (
+CREATE TABLE IF NOT EXISTS `administradores` (
   `idadministrador` int(11) NOT NULL,
   `nombre` text NOT NULL,
   `direccion` varchar(20) NOT NULL,
@@ -66,15 +66,15 @@ CREATE TABLE `administradores` (
 -- Estructura de tabla para la tabla `alumno`
 --
 
-CREATE TABLE `alumno` (
-  `idalumno` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `alumno` (
+`idalumno` int(11) NOT NULL,
   `nombreAlumno` text NOT NULL,
   `direccionAlumno` varchar(20) NOT NULL,
   `celularAlumno` bigint(20) NOT NULL,
   `telefonoAlumno` int(11) NOT NULL,
   `idcurso` int(11) NOT NULL,
   `idjornada` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `alumno`
@@ -82,8 +82,8 @@ CREATE TABLE `alumno` (
 
 INSERT INTO `alumno` (`idalumno`, `nombreAlumno`, `direccionAlumno`, `celularAlumno`, `telefonoAlumno`, `idcurso`, `idjornada`) VALUES
 (1, 'Maria Jose Diaz Toro', 'calle 20 #12c 45', 302548787, 7292929, 1, 2),
-(6, 'Maira Alejandra Diaz Toro', 'Calle 40 #23 - 23', 3025478967, 7288547, 6, 1),
-(10, 'Carmen Alicia Diaz', 'Calle 45 # 56 - 56', 3004504074, 7290229, 10, 3);
+(6, 'Maira Alejandra Diaz Toro', 'Calle 40 #23 - 23', 3025478967, 7288547, 2, 1),
+(10, 'Carmen Alicia Diaz', 'Calle 45 # 56 - 56', 3004504074, 7290229, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -91,8 +91,8 @@ INSERT INTO `alumno` (`idalumno`, `nombreAlumno`, `direccionAlumno`, `celularAlu
 -- Estructura de tabla para la tabla `areademateria`
 --
 
-CREATE TABLE `areademateria` (
-  `idarea` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `areademateria` (
+`idarea` int(11) NOT NULL,
   `nombre` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -102,12 +102,12 @@ CREATE TABLE `areademateria` (
 -- Estructura de tabla para la tabla `curso`
 --
 
-CREATE TABLE `curso` (
-  `idcurso` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `curso` (
+`idcurso` int(11) NOT NULL,
   `gradoCurso` int(11) NOT NULL,
   `nombreCurso` text NOT NULL,
   `ubicacionCurso` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `curso`
@@ -133,7 +133,7 @@ INSERT INTO `curso` (`idcurso`, `gradoCurso`, `nombreCurso`, `ubicacionCurso`) V
 -- Estructura de tabla para la tabla `cursoxmateria`
 --
 
-CREATE TABLE `cursoxmateria` (
+CREATE TABLE IF NOT EXISTS `cursoxmateria` (
   `idcurso` int(11) NOT NULL,
   `idmateria` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -300,7 +300,7 @@ INSERT INTO `cursoxmateria` (`idcurso`, `idmateria`) VALUES
 -- Estructura de tabla para la tabla `cursoxprofesor`
 --
 
-CREATE TABLE `cursoxprofesor` (
+CREATE TABLE IF NOT EXISTS `cursoxprofesor` (
   `idcurso` int(11) NOT NULL,
   `idprofesor` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -308,13 +308,76 @@ CREATE TABLE `cursoxprofesor` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `horario`
+--
+
+CREATE TABLE IF NOT EXISTS `horario` (
+`idhorario` int(11) NOT NULL,
+  `idcurso` int(11) NOT NULL,
+  `idjornada` int(11) NOT NULL,
+  `f11` text,
+  `f12` text,
+  `f13` text,
+  `f14` text,
+  `f15` text,
+  `f16` text,
+  `f17` text,
+  `f21` text,
+  `f22` text,
+  `f23` text,
+  `f24` text,
+  `f25` text,
+  `f26` text,
+  `f27` text,
+  `f31` text,
+  `f32` text,
+  `f33` text,
+  `f34` text,
+  `f35` text,
+  `f36` text,
+  `f37` text,
+  `f41` text,
+  `f42` text,
+  `f43` text,
+  `f44` text,
+  `f45` text,
+  `f46` text,
+  `f47` text,
+  `f61` text,
+  `f62` text,
+  `f63` text,
+  `f64` text,
+  `f65` text,
+  `f66` text,
+  `f67` text,
+  `f71` text,
+  `f72` text,
+  `f73` text,
+  `f74` text,
+  `f75` text,
+  `f76` text,
+  `f77` text
+) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `horario`
+--
+
+INSERT INTO `horario` (`idhorario`, `idcurso`, `idjornada`, `f11`, `f12`, `f13`, `f14`, `f15`, `f16`, `f17`, `f21`, `f22`, `f23`, `f24`, `f25`, `f26`, `f27`, `f31`, `f32`, `f33`, `f34`, `f35`, `f36`, `f37`, `f41`, `f42`, `f43`, `f44`, `f45`, `f46`, `f47`, `f61`, `f62`, `f63`, `f64`, `f65`, `f66`, `f67`, `f71`, `f72`, `f73`, `f74`, `f75`, `f76`, `f77`) VALUES
+(4, 2, 1, 'Geometria - Anselma Pinto', 'Geometria - Anselma Pinto', 'Geometria - Anselma Pinto', 'Geometria - Anselma Pinto', 'Geometria - Anselma Pinto', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+(18, 4, 1, 'Estadistica - Gisela Franco Lechuga', 'Estadistica - Gisela Franco Lechuga', 'Estadistica - Gisela Franco Lechuga', 'Estadistica - Gisela Franco Lechuga', 'Geometria - Anselma Pinto', '', '', 'Geometria - Anselma Pinto', 'Geometria - Anselma Pinto', 'Geometria - Anselma Pinto', 'Geometria - Anselma Pinto', 'Geometria - Anselma Pinto', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+(53, 1, 2, 'Geometria - Anselma Pinto', 'Estadistica - Gisela Franco Lechuga', 'Estadistica - Gisela Franco Lechuga', 'Estadistica - Gisela Franco Lechuga', 'Geometria - Anselma Pinto', 'Estadistica - Gisela Franco Lechuga', 'Estadistica - Gisela Franco Lechuga', 'Geometria - Anselma Pinto', '', '', '', '', '', '', 'Geometria - Anselma Pinto', '', '', '', '', '', '', 'Geometria - Anselma Pinto', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `jornada`
 --
 
-CREATE TABLE `jornada` (
-  `idjornada` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `jornada` (
+`idjornada` int(11) NOT NULL,
   `nombreJornada` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `jornada`
@@ -331,11 +394,11 @@ INSERT INTO `jornada` (`idjornada`, `nombreJornada`) VALUES
 -- Estructura de tabla para la tabla `materias`
 --
 
-CREATE TABLE `materias` (
-  `idmateria` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `materias` (
+`idmateria` int(11) NOT NULL,
   `nombreMateria` text NOT NULL,
   `credito` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `materias`
@@ -371,12 +434,12 @@ INSERT INTO `materias` (`idmateria`, `nombreMateria`, `credito`) VALUES
 -- Estructura de tabla para la tabla `notas`
 --
 
-CREATE TABLE `notas` (
-  `idnota` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `notas` (
+`idnota` int(11) NOT NULL,
   `idalumno` int(11) NOT NULL,
   `idcurso` int(11) NOT NULL,
   `idperiodo` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=85 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `notas`
@@ -397,7 +460,7 @@ INSERT INTO `notas` (`idnota`, `idalumno`, `idcurso`, `idperiodo`) VALUES
 -- Estructura de tabla para la tabla `notaxmateria`
 --
 
-CREATE TABLE `notaxmateria` (
+CREATE TABLE IF NOT EXISTS `notaxmateria` (
   `idnota` int(11) NOT NULL,
   `notaMatematicas` int(11) DEFAULT NULL,
   `descripcionMatematicas` text,
@@ -462,12 +525,12 @@ INSERT INTO `notaxmateria` (`idnota`, `notaMatematicas`, `descripcionMatematicas
 -- Estructura de tabla para la tabla `periodos`
 --
 
-CREATE TABLE `periodos` (
-  `idperiodo` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `periodos` (
+`idperiodo` int(11) NOT NULL,
   `nombrePeriodos` text NOT NULL,
   `fechaInicio` date NOT NULL,
   `fechafinal` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `periodos`
@@ -485,8 +548,8 @@ INSERT INTO `periodos` (`idperiodo`, `nombrePeriodos`, `fechaInicio`, `fechafina
 -- Estructura de tabla para la tabla `profesor`
 --
 
-CREATE TABLE `profesor` (
-  `idprofesor` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `profesor` (
+`idprofesor` int(11) NOT NULL,
   `nombreProfesor` text NOT NULL,
   `direccionProfesor` varchar(20) NOT NULL,
   `celularProfesor` bigint(20) NOT NULL,
@@ -514,7 +577,7 @@ CREATE TABLE `profesor` (
   `Democracia` varchar(3) DEFAULT NULL,
   `Algebra` varchar(3) DEFAULT NULL,
   `Naturales` varchar(3) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `profesor`
@@ -530,15 +593,15 @@ INSERT INTO `profesor` (`idprofesor`, `nombreProfesor`, `direccionProfesor`, `ce
 -- Estructura de tabla para la tabla `tareas`
 --
 
-CREATE TABLE `tareas` (
-  `idtareas` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `tareas` (
+`idtareas` int(11) NOT NULL,
   `idprofesor` int(11) NOT NULL,
   `idcurso` int(11) NOT NULL,
   `idjornada` int(11) NOT NULL,
   `titulo` text NOT NULL,
   `contenidoTarea` text NOT NULL,
   `fecha` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `tareas`
@@ -546,7 +609,8 @@ CREATE TABLE `tareas` (
 
 INSERT INTO `tareas` (`idtareas`, `idprofesor`, `idcurso`, `idjornada`, `titulo`, `contenidoTarea`, `fecha`) VALUES
 (6, 2, 2, 2, 'dfgdfgdg', '<p>sdfsdfsdfsf</p>', '2016-02-13'),
-(11, 3, 3, 2, 'Ejempo', 'zxczxczc asdfsdfsd ssdsdsc dc', '2016-02-03');
+(11, 3, 3, 2, 'Ejempo', 'zxczxczc asdfsdfsd ssdsdsc dc', '2016-02-03'),
+(13, 2, 1, 2, 'La hipotenusa', '<p><span style="color: #252525; font-family: sans-serif; font-size: 14px; line-height: 22.4px;">La', '2016-08-15');
 
 -- --------------------------------------------------------
 
@@ -554,13 +618,13 @@ INSERT INTO `tareas` (`idtareas`, `idprofesor`, `idcurso`, `idjornada`, `titulo`
 -- Estructura de tabla para la tabla `usuario`
 --
 
-CREATE TABLE `usuario` (
-  `idusuario` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `usuario` (
+`idusuario` int(11) NOT NULL,
   `usuario` text NOT NULL,
   `contrasena` varchar(20) NOT NULL,
   `roll` int(11) NOT NULL,
   `ididentidad` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `usuario`
@@ -570,7 +634,9 @@ INSERT INTO `usuario` (`idusuario`, `usuario`, `contrasena`, `roll`, `ididentida
 (1, 'ederius', '12345', 4, 1),
 (4, 'mtoro1', '1234', 1, 1),
 (5, 'ctoro', '12345', 2, 1),
-(6, 'apinto', '12345', 3, 2);
+(6, 'apinto', '12345', 3, 2),
+(7, 'majo', '1111', 1, 1),
+(8, 'maleja', '1111', 1, 6);
 
 -- --------------------------------------------------------
 
@@ -578,10 +644,10 @@ INSERT INTO `usuario` (`idusuario`, `usuario`, `contrasena`, `roll`, `ididentida
 -- Estructura de tabla para la tabla `usuarios`
 --
 
-CREATE TABLE `usuarios` (
-  `idusuarios` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `usuarios` (
+`idusuarios` int(11) NOT NULL,
   `nombre` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `usuarios`
@@ -600,114 +666,103 @@ INSERT INTO `usuarios` (`idusuarios`, `nombre`) VALUES
 -- Indices de la tabla `acudiente`
 --
 ALTER TABLE `acudiente`
-  ADD PRIMARY KEY (`idacudiente`),
-  ADD KEY `idalumno` (`idalumno`);
+ ADD PRIMARY KEY (`idacudiente`), ADD KEY `idalumno` (`idalumno`);
 
 --
 -- Indices de la tabla `administradores`
 --
 ALTER TABLE `administradores`
-  ADD PRIMARY KEY (`idadministrador`);
+ ADD PRIMARY KEY (`idadministrador`);
 
 --
 -- Indices de la tabla `alumno`
 --
 ALTER TABLE `alumno`
-  ADD PRIMARY KEY (`idalumno`),
-  ADD UNIQUE KEY `idcurso` (`idcurso`),
-  ADD KEY `idjornada` (`idjornada`);
+ ADD PRIMARY KEY (`idalumno`), ADD KEY `idjornada` (`idjornada`), ADD KEY `idcurso` (`idcurso`);
 
 --
 -- Indices de la tabla `areademateria`
 --
 ALTER TABLE `areademateria`
-  ADD PRIMARY KEY (`idarea`);
+ ADD PRIMARY KEY (`idarea`);
 
 --
 -- Indices de la tabla `curso`
 --
 ALTER TABLE `curso`
-  ADD PRIMARY KEY (`idcurso`),
-  ADD KEY `grado` (`gradoCurso`);
+ ADD PRIMARY KEY (`idcurso`), ADD KEY `grado` (`gradoCurso`);
 
 --
 -- Indices de la tabla `cursoxmateria`
 --
 ALTER TABLE `cursoxmateria`
-  ADD KEY `idcurso` (`idcurso`,`idmateria`),
-  ADD KEY `idcurso_2` (`idcurso`),
-  ADD KEY `idmateria` (`idmateria`),
-  ADD KEY `idmateria_2` (`idmateria`);
+ ADD KEY `idcurso` (`idcurso`,`idmateria`), ADD KEY `idcurso_2` (`idcurso`), ADD KEY `idmateria` (`idmateria`), ADD KEY `idmateria_2` (`idmateria`);
 
 --
 -- Indices de la tabla `cursoxprofesor`
 --
 ALTER TABLE `cursoxprofesor`
-  ADD KEY `idcurso` (`idcurso`),
-  ADD KEY `idprofesor` (`idprofesor`);
+ ADD KEY `idcurso` (`idcurso`), ADD KEY `idprofesor` (`idprofesor`);
+
+--
+-- Indices de la tabla `horario`
+--
+ALTER TABLE `horario`
+ ADD PRIMARY KEY (`idhorario`), ADD KEY `idcurso` (`idcurso`,`idjornada`);
 
 --
 -- Indices de la tabla `jornada`
 --
 ALTER TABLE `jornada`
-  ADD PRIMARY KEY (`idjornada`);
+ ADD PRIMARY KEY (`idjornada`);
 
 --
 -- Indices de la tabla `materias`
 --
 ALTER TABLE `materias`
-  ADD PRIMARY KEY (`idmateria`);
+ ADD PRIMARY KEY (`idmateria`);
 
 --
 -- Indices de la tabla `notas`
 --
 ALTER TABLE `notas`
-  ADD PRIMARY KEY (`idnota`),
-  ADD KEY `idalumno` (`idalumno`,`idcurso`),
-  ADD KEY `idperiodo` (`idperiodo`),
-  ADD KEY `idcurso` (`idcurso`);
+ ADD PRIMARY KEY (`idnota`), ADD KEY `idalumno` (`idalumno`,`idcurso`), ADD KEY `idperiodo` (`idperiodo`), ADD KEY `idcurso` (`idcurso`);
 
 --
 -- Indices de la tabla `notaxmateria`
 --
 ALTER TABLE `notaxmateria`
-  ADD UNIQUE KEY `idnota_3` (`idnota`),
-  ADD KEY `idnota` (`idnota`),
-  ADD KEY `idnota_2` (`idnota`);
+ ADD UNIQUE KEY `idnota_3` (`idnota`), ADD KEY `idnota` (`idnota`), ADD KEY `idnota_2` (`idnota`);
 
 --
 -- Indices de la tabla `periodos`
 --
 ALTER TABLE `periodos`
-  ADD PRIMARY KEY (`idperiodo`);
+ ADD PRIMARY KEY (`idperiodo`);
 
 --
 -- Indices de la tabla `profesor`
 --
 ALTER TABLE `profesor`
-  ADD PRIMARY KEY (`idprofesor`),
-  ADD KEY `idmateria` (`idmateria`);
+ ADD PRIMARY KEY (`idprofesor`), ADD KEY `idmateria` (`idmateria`);
 
 --
 -- Indices de la tabla `tareas`
 --
 ALTER TABLE `tareas`
-  ADD PRIMARY KEY (`idtareas`);
+ ADD PRIMARY KEY (`idtareas`);
 
 --
 -- Indices de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`idusuario`),
-  ADD UNIQUE KEY `idusuario` (`idusuario`),
-  ADD KEY `roll` (`roll`),
-  ADD KEY `ididentidad` (`ididentidad`);
+ ADD PRIMARY KEY (`idusuario`), ADD UNIQUE KEY `idusuario` (`idusuario`), ADD KEY `roll` (`roll`), ADD KEY `ididentidad` (`ididentidad`);
 
 --
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`idusuarios`);
+ ADD PRIMARY KEY (`idusuarios`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -717,62 +772,67 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `acudiente`
 --
 ALTER TABLE `acudiente`
-  MODIFY `idacudiente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+MODIFY `idacudiente` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `alumno`
 --
 ALTER TABLE `alumno`
-  MODIFY `idalumno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+MODIFY `idalumno` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT de la tabla `areademateria`
 --
 ALTER TABLE `areademateria`
-  MODIFY `idarea` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `idarea` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `curso`
 --
 ALTER TABLE `curso`
-  MODIFY `idcurso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+MODIFY `idcurso` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+--
+-- AUTO_INCREMENT de la tabla `horario`
+--
+ALTER TABLE `horario`
+MODIFY `idhorario` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=54;
 --
 -- AUTO_INCREMENT de la tabla `jornada`
 --
 ALTER TABLE `jornada`
-  MODIFY `idjornada` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+MODIFY `idjornada` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `materias`
 --
 ALTER TABLE `materias`
-  MODIFY `idmateria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+MODIFY `idmateria` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT de la tabla `notas`
 --
 ALTER TABLE `notas`
-  MODIFY `idnota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
+MODIFY `idnota` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=85;
 --
 -- AUTO_INCREMENT de la tabla `periodos`
 --
 ALTER TABLE `periodos`
-  MODIFY `idperiodo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+MODIFY `idperiodo` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `profesor`
 --
 ALTER TABLE `profesor`
-  MODIFY `idprofesor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+MODIFY `idprofesor` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `tareas`
 --
 ALTER TABLE `tareas`
-  MODIFY `idtareas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+MODIFY `idtareas` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `idusuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+MODIFY `idusuario` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `idusuarios` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+MODIFY `idusuarios` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- Restricciones para tablas volcadas
 --
@@ -781,34 +841,34 @@ ALTER TABLE `usuarios`
 -- Filtros para la tabla `acudiente`
 --
 ALTER TABLE `acudiente`
-  ADD CONSTRAINT `acudiente_ibfk_1` FOREIGN KEY (`idalumno`) REFERENCES `alumno` (`idalumno`) ON DELETE CASCADE ON UPDATE CASCADE;
+ADD CONSTRAINT `acudiente_ibfk_1` FOREIGN KEY (`idalumno`) REFERENCES `alumno` (`idalumno`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `cursoxmateria`
 --
 ALTER TABLE `cursoxmateria`
-  ADD CONSTRAINT `cursoxmateria_ibfk_1` FOREIGN KEY (`idcurso`) REFERENCES `curso` (`idcurso`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `juk` FOREIGN KEY (`idmateria`) REFERENCES `materias` (`idmateria`) ON DELETE CASCADE ON UPDATE CASCADE;
+ADD CONSTRAINT `cursoxmateria_ibfk_1` FOREIGN KEY (`idcurso`) REFERENCES `curso` (`idcurso`) ON DELETE CASCADE ON UPDATE CASCADE,
+ADD CONSTRAINT `juk` FOREIGN KEY (`idmateria`) REFERENCES `materias` (`idmateria`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `notas`
 --
 ALTER TABLE `notas`
-  ADD CONSTRAINT `notas_ibfk_1` FOREIGN KEY (`idperiodo`) REFERENCES `periodos` (`idperiodo`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `notas_ibfk_2` FOREIGN KEY (`idalumno`) REFERENCES `alumno` (`idalumno`),
-  ADD CONSTRAINT `notas_ibfk_3` FOREIGN KEY (`idcurso`) REFERENCES `curso` (`idcurso`);
+ADD CONSTRAINT `notas_ibfk_1` FOREIGN KEY (`idperiodo`) REFERENCES `periodos` (`idperiodo`) ON DELETE CASCADE ON UPDATE CASCADE,
+ADD CONSTRAINT `notas_ibfk_2` FOREIGN KEY (`idalumno`) REFERENCES `alumno` (`idalumno`),
+ADD CONSTRAINT `notas_ibfk_3` FOREIGN KEY (`idcurso`) REFERENCES `curso` (`idcurso`);
 
 --
 -- Filtros para la tabla `notaxmateria`
 --
 ALTER TABLE `notaxmateria`
-  ADD CONSTRAINT `notaxmateria_ibfk_1` FOREIGN KEY (`idnota`) REFERENCES `notas` (`idnota`) ON DELETE CASCADE ON UPDATE CASCADE;
+ADD CONSTRAINT `notaxmateria_ibfk_1` FOREIGN KEY (`idnota`) REFERENCES `notas` (`idnota`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `profesor`
 --
 ALTER TABLE `profesor`
-  ADD CONSTRAINT `profesor_ibfk_1` FOREIGN KEY (`idmateria`) REFERENCES `materias` (`idmateria`) ON DELETE CASCADE ON UPDATE CASCADE;
+ADD CONSTRAINT `profesor_ibfk_1` FOREIGN KEY (`idmateria`) REFERENCES `materias` (`idmateria`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

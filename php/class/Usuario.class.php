@@ -151,7 +151,9 @@ class Usuario {
         $query = $this->db->prepare("delete from usuario WHERE idusuario = :id ");
         $query->execute(array('id' => $id));
         $resultado=$query->fetchAll();
-        return($resultado);
+
+            echo'<div class="center-aligner center  light-blue white-text btn">Guardado!!</div>';
+        
 
     }
 
@@ -160,13 +162,7 @@ class Usuario {
         $query = $this->db->prepare("update usuario set contrasena=:contrasena where idusuario=:usuario ");
         $query->execute(array('usuario' => $usuario, 'contrasena' => $contrasena));
         $resultado=$query->fetchAll();
-
-        if($query){
-            echo'<div class="center-aligner center  red white-text btn">Error!!</div>';
-        }else{
-            echo'<div class="center-aligner center  light-blue white-text btn">Guardado!!</div>';
-        }
-
+        return 1;
     }
 
     public function validarContrasenaUsuario($contrasena,$idusuario){

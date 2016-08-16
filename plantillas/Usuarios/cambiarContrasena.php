@@ -24,7 +24,7 @@
     <br><br>
     <a class="btn wave-efect white-text center buttonG">Guardar</a>
     <p class="resultadoC"></p>
-    <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+    <br></br><br></br><br></br><br></br>
   </div>
 
 </div>
