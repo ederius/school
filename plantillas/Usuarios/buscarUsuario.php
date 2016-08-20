@@ -1,4 +1,4 @@
-<?php
+  <?php
 include '../../php/class/Usuario.class.php';
 
 $consulta= new Usuario();
@@ -102,8 +102,6 @@ $usuario=$consulta->buscarUsuarios($valor, $valor1);
     <div class="action-bar">
         <a class="waves-effect waves-light btn right actualizarUsuario" ><i class="mdi-notification-sync center white-text"></i></a>
         <a class="waves-effect waves-light btn right modal-action modal-close" ><i class="mdi-content-clear center white-text"></i></a>
-
-
     </div>
 </div>
 
@@ -112,13 +110,10 @@ $usuario=$consulta->buscarUsuarios($valor, $valor1);
     <h4>Eliminar Usuario</h4>
     <div class="bodyModalEliminarUsuario">
         ¿Esta seguro que quiere eliminar este Usuario?
-
     </div>
     <div class="action-bar">
         <a class="waves-effect waves-light btn right confirmacionEliminarUsuario " ><i class="mdi-action-delete center white-text"></i></a>
         <a class="waves-effect waves-light btn right modal-action modal-close" ><i class="mdi-content-clear center white-text"></i></a>
-
-
     </div>
 </div>
 

@@ -46,11 +46,11 @@ class Mail
                 $mail = new PHPMailer;
                 // Configuramos los datos de sesión para conectarnos al servicio SMTP de Mandrill
                 $mail->IsSMTP(); // Indicamos que vamos a utilizar SMTP
-                $mail->Host = 'smtp.mandrillapp.com'; // El Host de Mandrill
+                $mail->Host = 'smtp.gmail.com'; // El Host de Mandrill
                 $mail->Port = 587;  // El puerto que Mandrill nos indica utilizar
                 $mail->SMTPAuth = true; // Indicamos que vamos a utilizar auteticación SMTP
-                $mail->Username = 'ederdiaz_@hotmail.com'; // Nuestro usuario en Mandrill
-                $mail->Password = 'Jdim7StzxGg7ZT-z_SBMfQ'; // Key generado por Mandrill
+                $mail->Username = 'ederitodiaz@gmail.com'; // Nuestro usuario en Mandrill
+                $mail->Password = 'ederius910101141'; // Key generado por Mandrill
                 $mail->SMTPSecure = 'tls'; // Activamos el cifrado tls (también ssl)
                 // Ahora configuraremos los parámetros básicos de PHPMailer para hacer un envío típico
                 $mail->From = 'sistemas@chonkay.com'; // Nuestro correo electrónico
@@ -99,11 +99,11 @@ class Mail
             $mail = new PHPMailer;
             // Configuramos los datos de sesión para conectarnos al servicio SMTP de Mandrill
             $mail->IsSMTP(); // Indicamos que vamos a utilizar SMTP
-            $mail->Host = 'smtp.mandrillapp.com'; // El Host de Mandrill
+            $mail->Host = 'smtp.gmail.com'; // El Host de Mandrill
             $mail->Port = 587;  // El puerto que Mandrill nos indica utilizar
             $mail->SMTPAuth = true; // Indicamos que vamos a utilizar auteticación SMTP
-            $mail->Username = 'ederdiaz_@hotmail.com'; // Nuestro usuario en Mandrill
-            $mail->Password = 'Jdim7StzxGg7ZT-z_SBMfQ'; // Key generado por Mandrill
+            $mail->Username = 'ederitodiaz@gmail.com'; // Nuestro usuario en Mandrill
+            $mail->Password = 'ederius910101141'; // Key generado por Mandrill
             $mail->SMTPSecure = 'tls'; // Activamos el cifrado tls (también ssl)
             // Ahora configuraremos los parámetros básicos de PHPMailer para hacer un envío típico
             $mail->From = 'sistemas@chonkay.com'; // Nuestro correo electrónico
@@ -150,11 +150,11 @@ class Mail
             $mail = new PHPMailer;
             // Configuramos los datos de sesión para conectarnos al servicio SMTP de Mandrill
             $mail->IsSMTP(); // Indicamos que vamos a utilizar SMTP
-            $mail->Host = 'smtp.mandrillapp.com'; // El Host de Mandrill
+            $mail->Host = 'smtp.gmail.com'; // El Host de Mandrill
             $mail->Port = 587;  // El puerto que Mandrill nos indica utilizar
             $mail->SMTPAuth = true; // Indicamos que vamos a utilizar auteticación SMTP
-            $mail->Username = 'ederdiaz_@hotmail.com'; // Nuestro usuario en Mandrill
-            $mail->Password = 'Jdim7StzxGg7ZT-z_SBMfQ'; // Key generado por Mandrill
+            $mail->Username = 'ederitodiaz@gmail.com'; // Nuestro usuario en Mandrill
+            $mail->Password = 'ederius910101141'; // Key generado por Mandrill
             $mail->SMTPSecure = 'tls'; // Activamos el cifrado tls (también ssl)
             // Ahora configuraremos los parámetros básicos de PHPMailer para hacer un envío típico
             $mail->From = 'sistemas@chonkay.com'; // Nuestro correo electrónico

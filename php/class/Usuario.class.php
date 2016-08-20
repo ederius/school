@@ -88,10 +88,12 @@ class Usuario {
 
     public function consultarUsuariosProfesorPorId($id){
 
-        $query = $this->db->prepare("SELECT * FROM profesor where idprofesor=".$id."");
+        $query = $this->db->prepare("SELECT * FROM usuario, profesor where usuario.ididentidad=profesor.idprofesor and usuario.roll=3 and usuario.idusuario=:id");
         $query->execute(array('id' => $id));
         $resultado=$query->fetchAll();
-        return($resultado);
+        foreach($resultado as $a){}
+
+        return($a);
 
     }
 
@@ -128,8 +130,6 @@ class Usuario {
             $resultado = $query->fetchAll();
             return ($resultado);
         }
-
-
     }
 
     public function actualizarUsuario($idusuario,$usuario,$contrasena){
@@ -153,7 +153,7 @@ class Usuario {
         $resultado=$query->fetchAll();
 
             echo'<div class="center-aligner center  light-blue white-text btn">Guardado!!</div>';
-        
+
 
     }
 
@@ -162,7 +162,8 @@ class Usuario {
         $query = $this->db->prepare("update usuario set contrasena=:contrasena where idusuario=:usuario ");
         $query->execute(array('usuario' => $usuario, 'contrasena' => $contrasena));
         $resultado=$query->fetchAll();
-        return 1;
+        echo'<div class="center-aligner center  light-blue white-text btn">Guardado!!</div>';
+
     }
 
     public function validarContrasenaUsuario($contrasena,$idusuario){

@@ -85,7 +85,19 @@
                     </li>
                 </ul>
             </li>
+            <li class="no-padding">
+                <ul class="collapsible collapsible-accordion">
+                    <li class="bold"><a class="collapsible-header  waves-effect waves-teal"><i class=" small mdi-action-event"></i>Horario</a>
+                        <div class="collapsible-body teal lighten-5" style="">
+                            <ul>
 
+                                <li><a class="asignarTarea" href="#/estudiante/horario/ver">Ver horario</a></li>
+
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </li>
 
         </ul>
 

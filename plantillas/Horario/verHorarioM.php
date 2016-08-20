@@ -1,6 +1,7 @@
 
 <?php
 session_start();
+error_reporting(E_ALL);
 include '../../php/class/Profesor.class.php';
 include '../../php/class/Horario.class.php';
 include '../../php/class/Alumno.class.php';

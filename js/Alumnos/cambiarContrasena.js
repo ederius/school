@@ -25,7 +25,11 @@ $(".buttonG").click(function(){
                     data: datos,
 
                     success: function (data) {
-                        $('.resultadoC').fadeIn(1000).html(data);
+                        $('.resultadoC').fadeIn(1000).html(data).fadeOut(4000);
+                        $("#contrasena").val("");
+                        $("#contrasena1").val("");
+                        $("#contrasena2").val("");
+
                     }
                 });
               }

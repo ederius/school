@@ -100,7 +100,7 @@ $a = new Alumno();
                                 <a class=" right mailJornada btn waves-effect waves-light white-text center-align center"><i class="mdi-content-mail large"></i></a>
                             </div>
 
-                            <div class="resultadoMailporJornada col s12"></div>
+                            <div class="resultadoMailporJornada col s12 center center-align" ></div>
 
                         </div>
 

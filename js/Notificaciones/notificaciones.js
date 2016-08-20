@@ -43,7 +43,7 @@ $(document).on("ready", function() {
                 data: Data,
 
                 success: function (data) {
-                    $('.resultadoMailporCurso').fadeIn(1000).html(data)
+                    $('.resultadoMailporJornada').fadeIn(1000).html(data)
                 }
             });
         }
@@ -64,7 +64,7 @@ $(document).on("ready", function() {
             var Data='asuntoxtodos='+asuntoxtodos+'&mensajeAcudientextodos='+mensajeAcudientextodos
             $.ajax({
                 type: "POST",
-                url: "Notificaciones/mailporTodos.php",
+                url: "Notificaciones/mailxTodos.php",
                 data: Data,
 
                 success: function (data) {
